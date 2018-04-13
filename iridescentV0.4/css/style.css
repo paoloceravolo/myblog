@@ -1,0 +1,13 @@
+#sidebar {
+  background-color: red;
+  width: 30%;
+  float:left;
+  margin-right: 1%;
+}
+
+#content{
+  width: 60%;
+  background-color: pink;
+  float:left;
+  padding: 1%;
+}
