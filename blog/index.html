@@ -208,13 +208,13 @@ var iri = new Iridiscient("sidebar",1000,"#9832");
 function changecolor(index){
 setTimeout(function(){
 
-  console.log(iri.corval()[index]);
+ // console.log(iri.corval()[index]);
   document.getElementById(iri.target).style.backgroundColor = iri.corval()[index];
   var el = document.querySelectorAll(".post-description")[0];
   var txt = document.createTextNode(iri.corval()[index]);
   el.removeChild(el.childNodes[0]);
   el.appendChild(txt);
-  console.log(iri.corval()[index]);
+  //console.log(iri.corval()[index]);
   if(0<=index && index <255){index = index +1;}
   else{index = 0;}
   changecolor(index);
@@ -224,6 +224,10 @@ setTimeout(function(){
 
 changecolor(iri.start(250));
 </script>
+
+<script type="text/javascript" src="script.js"></script>
+
+
 
 </body>
 </html>
