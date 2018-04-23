@@ -20,9 +20,36 @@ request.onload = function(){
 		//console.log(request.responseText);
 		var resp = JSON.parse(request.responseText);
 		//console.log(resp[0]);
-	};
+		for(var i=0;i<resp.length;i++){
+			var template = _.template(
+"<div class='posts'><p><%= denominazione_museo %></p></div>"
+			);
+			var render = template(resp[i]);
+			document.body.innerHTML += render;
+		}
+	}else{
+		throw new Error('BOOM');
+	}
 };
+request.onerror = function(){
+	throw new Error('There was a connection error of some sort');
+};
+//request.withCredentials = true;
 request.send();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
