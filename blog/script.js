@@ -1,7 +1,8 @@
 var img = document.querySelectorAll(".post-avatar");
-console.log(img);
+console.log(img.length);
 
 for(var i=0;i<img.length;i++){
+	console.log(i);
 	img[i].addEventListener("mouseover",function(){
 		this.style.zoom = 1.5;
 	});
@@ -25,6 +26,7 @@ request.onload = function(){
 "<div class='posts'><p><%= denominazione_museo %></p></div>"
 			);
 			var render = template(resp[i]);
+			//Attenzione, con questa istruzione il body viene ricaricato, annullando le manipolazioni svolte su gli elementi .post-avatar
 			document.body.innerHTML += render;
 		}
 	}else{
