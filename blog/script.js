@@ -1,5 +1,18 @@
-var view = "<div class='posts'>\
-<p><%= denominazione_museo %></p></div>"
+var view = "\
+<section class='post'>\
+    <header class='post-header'>\
+        <h2 class='post-title'><%= denominazione_museo %></h2>\
+                        <p class='post-meta'>\
+                            By <a class='post-author' href='<% if(typeof(sito_web_sede) !== 'undefined'){%> <%= sito_web_sede %> <% } %>'><%= comune_sede %></a>\
+                        </p>\
+                    </header>\
+                    <div class='post-description'>\
+                        <p>\
+                            <%= denominazione_sede %>\
+                        </p>\
+                    </div>\
+                </section>\
+";
 
 
 var img = document.querySelectorAll(".post-avatar");
@@ -30,8 +43,7 @@ request.onload = function(){
 			view
 			);
 			var render = template(resp[i]);
-			//Attenzione, con questa istruzione il body viene ricaricato, annullando le manipolazioni svolte su gli elementi .post-avatar
-			document.body.innerHTML += render;
+			document.querySelectorAll(".content")[0].innerHTML += render;
 		}
 	}else{
 		throw new Error('BOOM');
