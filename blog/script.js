@@ -1,3 +1,7 @@
+var view = "<div class='posts'>\
+<p><%= denominazione_museo %></p></div>"
+
+
 var img = document.querySelectorAll(".post-avatar");
 console.log(img.length);
 
@@ -23,7 +27,7 @@ request.onload = function(){
 		//console.log(resp[0]);
 		for(var i=0;i<resp.length;i++){
 			var template = _.template(
-"<div class='posts'><p><%= denominazione_museo %></p></div>"
+			view
 			);
 			var render = template(resp[i]);
 			//Attenzione, con questa istruzione il body viene ricaricato, annullando le manipolazioni svolte su gli elementi .post-avatar
