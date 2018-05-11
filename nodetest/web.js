@@ -5,16 +5,22 @@ function lista_dir(path,callback){
 	fs.readdir(path,function(err,files){
 		if(err){callback(err);return}
 		var dir = [];
-		//il ciclo for non entra nel flusso delle chiamate di callback 
-		for(var i=0; i< files.length; i++){
-			fs.stat(path + files[i],
+		//la funzione iterator consente di eseguire la callback solo a conclusione del cilco, oppur ein caso di errore 
+		function iterator(index){
+			if(index == files.length){
+				callback(null,dir);
+				return;
+			}
+			fs.stat(path + files[index],
 				function(err,stats){
+					if(err){callback(err);return};
 					if(stats.isDirectory()){
-						dir.push(files[i]);
+						dir.push(files[index]);
 					};
+					iterator(index+1);
 				});
 		}
-		callback(null,dir);
+		iterator(0);
 	});
 };
 
