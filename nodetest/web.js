@@ -4,8 +4,17 @@ const fs = require('fs');
 function lista_dir(path,callback){
 	fs.readdir(path,function(err,files){
 		if(err){callback(err);return}
-
-		callback(null,files);
+		var dir = [];
+		//il ciclo for non entra nel flusso delle chiamate di callback 
+		for(var i=0; i< files.length; i++){
+			fs.stat(path + files[i],
+				function(err,stats){
+					if(stats.isDirectory()){
+						dir.push(files[i]);
+					};
+				});
+		}
+		callback(null,dir);
 	});
 };
 
