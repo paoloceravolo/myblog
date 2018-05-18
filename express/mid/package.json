@@ -1,0 +1,14 @@
+{
+  "name": "mid",
+  "version": "1.0.0",
+  "description": "giusto una prova con le funzioni di midleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paolo Ceravolo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
