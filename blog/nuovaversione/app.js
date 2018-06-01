@@ -10,7 +10,30 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+var test = function(req,res,next){
+	if(req.url.length > 3){
+		console.log("Request length: "+req.url.length);
+	}
+	next();
+};
+
+var header = function(req,res,next){
+	//console.log(JSON.stringify(req.headers));
+	if(req.headers.accept.includes('xml')){
+		console.log("XML ok")
+	}
+	next();
+}
+
 app.use(express.static(path.join(__dirname, './public')));
+
+app.use(header);
+app.use(test);
+
+
+
+
+
 
 app.get('/', function(req, res){
 	console.log('Sono qui mi hai chiamato!');

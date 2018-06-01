@@ -1,0 +1,20 @@
+ <main>
+        <div class="jumbotron">
+
+          {{#if positive}}
+            <h1>Complimentoni</h1>
+          {{else}}
+            <h1>Complimentini</h1>
+          {{/if}}
+            
+            <p>Hai appena usato EJS per parsare un file JSON</p>
+            <ul>
+              {{#each users as |val key|}}
+              <li>{{key}}: {{val}}</li>
+              {{/each}}
+			</ul>
+        </div>
+
+{{> footer}}
+
+    </main>
