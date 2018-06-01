@@ -7,6 +7,8 @@ const request = require('request');
 
 var Data = require('./util/loaddata.js');
 
+var routes = require('./routes');
+
 // console.log(Data.d);
 // console.log(Data.sum(3,5));
 
@@ -54,15 +56,7 @@ app.use(test);
 app.use(filter);
 
 
-
-
-
-
-app.get('/', function(req, res){
-	console.log('Sono qui mi hai chiamato!');
-	//res.send('Sono qui mi hai chiamato!\n');
-	//res.render()
-});
+app.get('/', routes.index);
 
 app.get('/musei/:id_museo', function(req, res){
 	console.log('se cerchi musei sei nel posto giusto');
@@ -85,3 +79,5 @@ app.use(function(err, req, res, next){
 	console.log(err.stack);
 	res.status(500).send('Qualcosa non va! \n');
 });
+
+module.exports = app;

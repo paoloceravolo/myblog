@@ -20,10 +20,10 @@ module.exports = Data;
 
 
 // var data = {};
-// var options = {
-// 	url: 'https://www.dati.lombardia.it/resource/rbg8-vnzg.json',
-// 	headers: {'User-Agent': 'request'}
-// };
+var options = {
+ 	url: 'https://www.dati.lombardia.it/resource/rbg8-vnzg.json',
+ 	headers: {'User-Agent': 'request'}
+ };
 
 // function callback(error, response, body){
 // 	if(!error && response.statusCode == 200){
