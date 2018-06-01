@@ -7,12 +7,12 @@ const request = require('request');
 
 var Data = require('./util/loaddata.js');
 
-console.log(Data.d);
-console.log(Data.sum(3,5));
+// console.log(Data.d);
+// console.log(Data.sum(3,5));
 
 var data = new Data();
 data.on('done', function(event){
-	console.log('Leggo evento: ', event);
+	console.log('Leggo evento: ', event.data[22].comune_sede);
 	data.removeAllListeners();
 })
 data.process();
