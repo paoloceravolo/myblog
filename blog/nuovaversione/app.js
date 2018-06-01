@@ -5,32 +5,25 @@ const path = require('path');
 const port = 8383;
 const request = require('request');
 
-var data = {};
+var Data = require('./util/loaddata.js');
+
+console.log(Data.d);
+console.log(Data.sum(3,5));
+
+var data = new Data();
+data.on('done', function(event){
+	console.log('Leggo evento: ', event);
+	data.removeAllListeners();
+})
+data.process();
 
 var filter = function(res,req,next){
 	console.log('Dati filtrati: ');
-	console.log(data[44].comune_sede);
-	data = data[44]; 
+	//console.log(data[44].comune_sede);
+	//data = data[44]; 
 	next();
 }
 
-var options = {
-	url: 'https://www.dati.lombardia.it/resource/rbg8-vnzg.json',
-	headers: {'User-Agent': 'request'}
-};
-
-function callback(error, response, body){
-	if(!error && response.statusCode == 200){
-		var info = JSON.parse(body);
-		data = info;
-		console.log('Dati caricati: '+info[2].comune_sede);
-	}
-};
-
-var load = function(req,res,next){
-	request(options,callback);
-	next();
-}
 
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main',
@@ -55,7 +48,7 @@ var header = function(req,res,next){
 
 app.use(express.static(path.join(__dirname, './public')));
 
-app.use(load);
+//app.use(load);
 app.use(header);
 app.use(test);
 app.use(filter);
