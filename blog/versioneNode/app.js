@@ -37,8 +37,9 @@ var filter = function(res,req,next){
 	next();
 }
 
+//app.use(express.static('public'))
 // attivazioni di middleware da moduli 
-app.use(express.static(path.join(__dirname, './public'))); // redirect requests of static files to ./public
+app.use(express.static(path.join(__dirname, 'public'))); // redirect requests of static files to ./public
 //app.use(trailingSlash({slash: false})) // slash boolean (default: true): when true a URL will be redirected to contain a slash; when false, it will be redirected to omit one.
 
 // attivazioni di middleware create

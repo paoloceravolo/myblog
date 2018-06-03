@@ -31,12 +31,14 @@ for(var i=0;i<img.length;i++){
 };
 
 // Selezione sulla provincia
+if(document.querySelectorAll("select")[0]){
 var selezione = document.querySelectorAll("select")[0];
 selezione.addEventListener("change", function(){
 	console.log("cambio selezione");
 	var prov = selezione.value;
 	loadData(prov);
 });
+}
 
 // Oggetto per includere le coordiante geografiche del dataset
 var locations = []
