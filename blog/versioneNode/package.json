@@ -17,7 +17,12 @@
     "request": "^2.87.0",
     "trailing-slash": "^2.0.0",
     "body-parser": "*",
-    "express-validator": "*",
-    "express-session": "*"
-  }
+    "express-session": "*",
+    "express-validator": "*"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
