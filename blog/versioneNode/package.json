@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
+    "cookie-parser": "*",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-handlebars": "^3.0.0",
@@ -15,6 +15,9 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "request": "^2.87.0",
-    "trailing-slash": "^2.0.0"
+    "trailing-slash": "^2.0.0",
+    "body-parser": "*",
+    "express-validator": "*",
+    "express-session": "*"
   }
 }

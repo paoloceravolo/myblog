@@ -4,6 +4,10 @@ const app = express();
 const path = require('path');
 const port = 8383;
 //var trailingSlash = require('trailing-slash') // Add or remove trailing slashes, and redirect.
+const cookeParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const session = require('express-session');
 
 var routes = require('./routes');
 
@@ -48,10 +52,19 @@ app.use(header);
 app.use(test);
 app.use(filter);
 
+// arrivazione middleware di sessione
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookeParser());
+
+app.use(session({secret: 'crema', resave: false, saveUninitialized: true}));
+app.use(expressValidator());
+
 // corrispondeza tra endpoint e modulo di routing 
 app.get('/', routes.index);
 app.get('/mappa/', routes.mappa);
 app.get('/musei/:id_museo/', routes.musei);
+app.post('/user/add', routes.adduser);
 
 // definizione della porta del server
 app.listen(port, function(){
